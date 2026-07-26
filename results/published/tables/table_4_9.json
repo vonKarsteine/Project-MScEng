@@ -1,0 +1,40 @@
+{
+  "table": "4.9",
+  "caption": "Residual-Calibrated Kalman Fusion on the test split, over the same two-by-two grid of branches as Table 4.8.",
+  "source": "MScEng.pdf",
+  "route": "rckf",
+  "rows": [
+    {
+      "displayName": "ConvNeXt V2 + SimSiam",
+      "testAcc": 0.829,
+      "testQwk": 0.937,
+      "testKl1": 0.748,
+      "xray": "ConvNeXt V2",
+      "mri": "SimSiam"
+    },
+    {
+      "displayName": "ConvNeXt V2 + Swin-3D",
+      "testAcc": 0.817,
+      "testQwk": 0.933,
+      "testKl1": 0.731,
+      "xray": "ConvNeXt V2",
+      "mri": "Swin-3D"
+    },
+    {
+      "displayName": "MaxViT + SimSiam",
+      "testAcc": 0.823,
+      "testQwk": 0.935,
+      "testKl1": 0.739,
+      "xray": "MaxViT",
+      "mri": "SimSiam"
+    },
+    {
+      "displayName": "MaxViT + Swin-3D",
+      "testAcc": 0.808,
+      "testQwk": 0.929,
+      "testKl1": 0.714,
+      "xray": "MaxViT",
+      "mri": "Swin-3D"
+    }
+  ]
+}

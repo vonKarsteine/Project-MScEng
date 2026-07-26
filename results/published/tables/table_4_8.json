@@ -1,0 +1,40 @@
+{
+  "table": "4.8",
+  "caption": "Contrastive fusion on the test split, over the two-by-two grid of X-ray and MRI branches.",
+  "source": "MScEng.pdf",
+  "route": "contrastive",
+  "rows": [
+    {
+      "displayName": "ConvNeXt V2 + SimSiam",
+      "testAcc": 0.807,
+      "testQwk": 0.929,
+      "testKl1": 0.706,
+      "xray": "ConvNeXt V2",
+      "mri": "SimSiam"
+    },
+    {
+      "displayName": "ConvNeXt V2 + Swin-3D",
+      "testAcc": 0.798,
+      "testQwk": 0.925,
+      "testKl1": 0.689,
+      "xray": "ConvNeXt V2",
+      "mri": "Swin-3D"
+    },
+    {
+      "displayName": "MaxViT + SimSiam",
+      "testAcc": 0.802,
+      "testQwk": 0.927,
+      "testKl1": 0.697,
+      "xray": "MaxViT",
+      "mri": "SimSiam"
+    },
+    {
+      "displayName": "MaxViT + Swin-3D",
+      "testAcc": 0.79,
+      "testQwk": 0.923,
+      "testKl1": 0.672,
+      "xray": "MaxViT",
+      "mri": "Swin-3D"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "table": "4.2",
+  "caption": "Kellgren-Lawrence grade distribution of the paired multimodal cohort, by split. Splits are subject-disjoint.",
+  "source": "MScEng.pdf",
+  "grandTotal": 3536,
+  "standaloneMriRecordsBeforePairing": 4324,
+  "rows": [
+    {
+      "split": "train",
+      "label": "Training",
+      "kl0": 988,
+      "kl1": 443,
+      "kl2": 680,
+      "kl3": 314,
+      "kl4": 81,
+      "total": 2506
+    },
+    {
+      "split": "val",
+      "label": "Validation",
+      "kl0": 138,
+      "kl1": 63,
+      "kl2": 95,
+      "kl3": 50,
+      "kl4": 11,
+      "total": 357
+    },
+    {
+      "split": "test",
+      "label": "Testing",
+      "kl0": 259,
+      "kl1": 119,
+      "kl2": 188,
+      "kl3": 85,
+      "kl4": 22,
+      "total": 673
+    }
+  ]
+}

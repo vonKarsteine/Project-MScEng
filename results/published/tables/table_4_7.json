@@ -1,0 +1,32 @@
+{
+  "table": "4.7",
+  "caption": "Traditional fusion operators on the test split. All three share the ConvNeXt V2 + SimSiam SSL branch pairing, so the comparison isolates the fusion operator.",
+  "source": "MScEng.pdf",
+  "branchPairing": {
+    "xray": "ConvNeXt V2",
+    "mri": "SimSiam SSL"
+  },
+  "rows": [
+    {
+      "displayName": "Concat",
+      "testAcc": 0.783,
+      "testQwk": 0.92,
+      "testKl1": 0.655,
+      "route": "late_concat"
+    },
+    {
+      "displayName": "Gated",
+      "testAcc": 0.795,
+      "testQwk": 0.924,
+      "testKl1": 0.681,
+      "route": "gated"
+    },
+    {
+      "displayName": "Cross-attention",
+      "testAcc": 0.788,
+      "testQwk": 0.921,
+      "testKl1": 0.672,
+      "route": "cross_attention"
+    }
+  ]
+}

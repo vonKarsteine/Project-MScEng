@@ -1,0 +1,105 @@
+{
+  "table": "4.12",
+  "caption": "Subject-clustered bootstrap point estimates and 95% confidence intervals on the test split, B = 2000 resamples.",
+  "source": "MScEng.pdf",
+  "bootstrapIterations": 2000,
+  "confidenceLevel": 0.95,
+  "rows": [
+    {
+      "system": "ConvNeXt V2 + SimSiam SSL (RCKF)",
+      "accuracy": {
+        "point": 0.829,
+        "ci95": [
+          0.801,
+          0.856
+        ]
+      },
+      "qwk": {
+        "point": 0.937,
+        "ci95": [
+          0.927,
+          0.948
+        ]
+      },
+      "kl1Recall": {
+        "point": 0.748,
+        "ci95": [
+          0.664,
+          0.824
+        ]
+      }
+    },
+    {
+      "system": "X-ray C-MODES",
+      "accuracy": {
+        "point": 0.829,
+        "ci95": [
+          0.801,
+          0.856
+        ]
+      },
+      "qwk": {
+        "point": 0.938,
+        "ci95": [
+          0.927,
+          0.948
+        ]
+      },
+      "kl1Recall": {
+        "point": 0.731,
+        "ci95": [
+          0.647,
+          0.811
+        ]
+      }
+    },
+    {
+      "system": "Fusion OOF Stack",
+      "accuracy": {
+        "point": 0.835,
+        "ci95": [
+          0.807,
+          0.862
+        ]
+      },
+      "qwk": {
+        "point": 0.94,
+        "ci95": [
+          0.929,
+          0.95
+        ]
+      },
+      "kl1Recall": {
+        "point": 0.756,
+        "ci95": [
+          0.672,
+          0.832
+        ]
+      }
+    },
+    {
+      "system": "Fusion C-MODES",
+      "accuracy": {
+        "point": 0.872,
+        "ci95": [
+          0.847,
+          0.896
+        ]
+      },
+      "qwk": {
+        "point": 0.954,
+        "ci95": [
+          0.944,
+          0.963
+        ]
+      },
+      "kl1Recall": {
+        "point": 0.824,
+        "ci95": [
+          0.756,
+          0.891
+        ]
+      }
+    }
+  ]
+}

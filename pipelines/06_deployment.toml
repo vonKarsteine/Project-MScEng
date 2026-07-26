@@ -1,0 +1,38 @@
+pipeline_id = "06_deployment"
+section = "the dissertation 4.6 -- QAT and Serverless Demo Prototype"
+description = """
+Freeze the FP32 composite as a teacher, distil a mixed-precision student, export
+it, and serve the workbench.
+
+The precision profile is deliberately uneven (Table 3.3): the X-ray encoder is the
+computational bulk and tolerates INT8; the MRI/RCKF branch carries the variance
+and gain estimates that the whole reliability argument rests on, so it stays
+FP16/mixed; and the CORN head is never quantized at all, because four chained
+sigmoids compound an early rounding error across every later class posterior.
+
+Distillation transfers more than class posteriors: the six-term objective also
+aligns the student's Kalman gain, measurement variance and routing scores, so the
+quantized model inherits the teacher's cross-modal trust policy rather than
+merely its answers.
+"""
+
+[[step]]
+command = "qat"
+operation = "train"
+pool = "fusion"
+description = "Table 4.15. Six-term distillation; the student gives up 0.011 accuracy and 0.026 KL1 recall against the FP32 teacher."
+
+[[step]]
+command = "qat"
+operation = "export"
+description = "Export the 7-field deployment contract to ONNX. Output names derive from the contract dataclass, so they cannot drift out of order."
+
+[[step]]
+command = "records"
+operation = "validate"
+description = "Validate the record tree. A pending record carrying metrics is rejected."
+
+[[step]]
+command = "serve"
+operation = "check"
+description = "Start-up check for the demo API behind the React/Konva workbench (Figure 4.6)."

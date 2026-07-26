@@ -1,0 +1,23 @@
+{
+  "name": "koa-multimodal-workbench",
+  "version": "7.0.0",
+  "description": "KOA Multimodal v7 clinical inference workbench",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "konva": "^9.2.0",
+    "onnxruntime-web": "^1.27.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-konva": "^18.2.10"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^6.4.3"
+  }
+}

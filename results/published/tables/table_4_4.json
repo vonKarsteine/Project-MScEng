@@ -1,0 +1,57 @@
+{
+  "table": "4.4",
+  "caption": "Computational cost by training stage, on the original hardware of section 4.1.4.",
+  "source": "MScEng.pdf",
+  "rows": [
+    {
+      "stage": "unimodal_xray_screening",
+      "label": "Unimodal X-ray screening",
+      "models": 5,
+      "epochsPerModel": 20,
+      "cost": 6,
+      "unit": "GPU-h",
+      "approximate": true
+    },
+    {
+      "stage": "unimodal_mri",
+      "label": "Unimodal MRI",
+      "models": 4,
+      "epochsPerModel": 20,
+      "cost": 10,
+      "unit": "GPU-h",
+      "approximate": true
+    },
+    {
+      "stage": "multimodal_fusion",
+      "label": "Multimodal fusion",
+      "models": 11,
+      "epochsPerModel": 20,
+      "cost": 33,
+      "unit": "GPU-h",
+      "approximate": true
+    },
+    {
+      "stage": "oof_generation_and_ensemble",
+      "label": "OOF generation and ensemble",
+      "cost": 12,
+      "unit": "GPU-h",
+      "approximate": true
+    },
+    {
+      "stage": "qat_optimisation_and_export",
+      "label": "QAT optimisation and export",
+      "cost": 3,
+      "unit": "GPU-h",
+      "approximate": true
+    },
+    {
+      "stage": "statistical_validation",
+      "label": "Statistical validation",
+      "resamples": 2000,
+      "resampleScheme": "clustered bootstrap",
+      "cost": 1,
+      "unit": "CPU-h",
+      "approximate": true
+    }
+  ]
+}

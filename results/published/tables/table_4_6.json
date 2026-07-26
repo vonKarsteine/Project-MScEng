@@ -1,0 +1,47 @@
+{
+  "table": "4.6",
+  "caption": "MRI unimodal candidates on the paired cohort: validation and test accuracy, quadratic weighted kappa and KL1 recall.",
+  "source": "MScEng.pdf",
+  "rows": [
+    {
+      "displayName": "SimSiam SSL + fine-tune",
+      "candidateId": "mri_simsiam_ssl",
+      "valAcc": 0.721,
+      "valQwk": 0.856,
+      "valKl1": 0.612,
+      "testAcc": 0.71,
+      "testQwk": 0.848,
+      "testKl1": 0.593
+    },
+    {
+      "displayName": "Swin-3D Transformer",
+      "candidateId": "mri_swin3d",
+      "valAcc": 0.71,
+      "valQwk": 0.849,
+      "valKl1": 0.596,
+      "testAcc": 0.697,
+      "testQwk": 0.839,
+      "testKl1": 0.579
+    },
+    {
+      "displayName": "R3D18-attn",
+      "candidateId": "mri_r3d18_attn",
+      "valAcc": 0.714,
+      "valQwk": 0.846,
+      "valKl1": 0.597,
+      "testAcc": 0.669,
+      "testQwk": 0.815,
+      "testKl1": 0.526
+    },
+    {
+      "displayName": "R3D18",
+      "candidateId": "mri_r3d18",
+      "valAcc": 0.672,
+      "valQwk": 0.819,
+      "valKl1": 0.536,
+      "testAcc": 0.661,
+      "testQwk": 0.807,
+      "testKl1": 0.512
+    }
+  ]
+}

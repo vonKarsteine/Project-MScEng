@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "koa-record-v1",
+  "runId": "run_001",
+  "status": "pending",
+  "description": "Unimodal candidates, in the order of MScEng.pdf Tables 4.5 (X-ray) and 4.6 (MRI). Selection is on validation QWK, so both splits are recorded separately and only the test block is reportable.",
+  "candidates": [
+    {
+      "candidateId": "xray_convnext_v2",
+      "modality": "xray",
+      "displayName": "ConvNeXt V2",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "xray_maxvit",
+      "modality": "xray",
+      "displayName": "MaxViT",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "xray_swin_t",
+      "modality": "xray",
+      "displayName": "Swin-T",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "xray_efficientnet_v2",
+      "modality": "xray",
+      "displayName": "EfficientNet V2",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "xray_deit",
+      "modality": "xray",
+      "displayName": "DeiT",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "mri_simsiam_ssl",
+      "modality": "mri",
+      "displayName": "SimSiam SSL + fine-tune",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "mri_swin3d",
+      "modality": "mri",
+      "displayName": "Swin-3D Transformer",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "mri_r3d18_attn",
+      "modality": "mri",
+      "displayName": "R3D18-attn",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    },
+    {
+      "candidateId": "mri_r3d18",
+      "modality": "mri",
+      "displayName": "R3D18",
+      "validation": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "checkpointHash": null
+    }
+  ]
+}

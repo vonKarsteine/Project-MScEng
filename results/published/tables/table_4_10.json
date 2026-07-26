@@ -1,0 +1,43 @@
+{
+  "table": "4.10",
+  "caption": "Ensemble and dynamic-routing results on the test split. Switch precision is 0.000 for the static ensembles because they never switch.",
+  "source": "MScEng.pdf",
+  "rows": [
+    {
+      "displayName": "X-ray + traditional ensemble",
+      "testAcc": 0.813,
+      "testQwk": 0.931,
+      "testKl1": 0.697,
+      "switchPrecision": 0.0,
+      "pool": "ConvNeXt V2 + MaxViT + EfficientNet V2 + Swin-T",
+      "strategy": "posterior_averaging"
+    },
+    {
+      "displayName": "X-ray + C-MODES",
+      "testAcc": 0.829,
+      "testQwk": 0.938,
+      "testKl1": 0.731,
+      "switchPrecision": 0.69,
+      "pool": "ConvNeXt V2 + MaxViT + EfficientNet V2 + Swin-T",
+      "strategy": "cmodes_routing"
+    },
+    {
+      "displayName": "Multimodal + traditional ensemble",
+      "testAcc": 0.835,
+      "testQwk": 0.94,
+      "testKl1": 0.756,
+      "switchPrecision": 0.0,
+      "pool": "gated fusion + contrastive + RCKF candidates",
+      "strategy": "posterior_averaging"
+    },
+    {
+      "displayName": "Multimodal + C-MODES",
+      "testAcc": 0.872,
+      "testQwk": 0.954,
+      "testKl1": 0.824,
+      "switchPrecision": 0.81,
+      "pool": "gated fusion + contrastive + RCKF candidates",
+      "strategy": "cmodes_routing"
+    }
+  ]
+}

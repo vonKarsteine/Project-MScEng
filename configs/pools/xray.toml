@@ -1,0 +1,39 @@
+# X-ray-only candidate pool -- Table 4.10, rows 1-2, and Table 4.11 row 1.
+#
+# A pool binds each candidate id to its artifact, weight and display name in one
+# ordered place. Passing them instead as repeated --prediction-file / --weight
+# flags zipped against a separate id list would make the order of shell arguments
+# silently load-bearing, so a transposition would produce wrong results rather
+# than an error.
+#
+# Four heterogeneous X-ray models. The pool's value is complementarity, not
+# per-model strength: Table 4.11 puts its oracle bound at 0.897 accuracy, well
+# above any single member, which is why routing between them is worth doing.
+
+pool_id = "xray"
+description = "Four heterogeneous X-ray candidates (Table 4.10 rows 1-2)"
+default_candidate_id = "xray_convnext_v2"
+
+[[member]]
+candidate_id = "xray_convnext_v2"
+display_name = "ConvNeXt V2"
+artifact = "artifacts/run_001/oof/xray_convnext_v2.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "xray_maxvit"
+display_name = "MaxViT"
+artifact = "artifacts/run_001/oof/xray_maxvit.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "xray_efficientnet_v2"
+display_name = "EfficientNet V2"
+artifact = "artifacts/run_001/oof/xray_efficientnet_v2.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "xray_swin_t"
+display_name = "Swin-T"
+artifact = "artifacts/run_001/oof/xray_swin_t.json"
+weight = 1.0

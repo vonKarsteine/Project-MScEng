@@ -1,0 +1,77 @@
+pipeline_id = "03_fusion"
+section = "the dissertation 4.3 -- Multimodal Fusion Candidates and Results"
+description = """
+Three traditional baselines (Table 4.7), contrastive alignment (Table 4.8), then
+RCKF (Table 4.9), over the strongest unimodal pair.
+
+The ordering is the argument. Traditional fusion barely beats the X-ray-only
+model, and cross-attention -- the most expressive of the three -- is worse than
+gating, because a stronger interaction module amplifies heterogeneous cross-modal
+noise as readily as signal. Contrastive alignment improves on that by implicitly
+filtering the uncorrelated component, but applies the same pull to every sample.
+RCKF adds what neither has: a per-sample estimate of how far this particular
+measurement can be trusted, which lifts KL1 recall from 0.681 to 0.748.
+"""
+
+[[step]]
+command = "train"
+stage = "late_concat"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.7 row 1. Concatenation baseline."
+
+[[step]]
+command = "train"
+stage = "gated"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.7 row 2. Best traditional baseline; enters the multimodal ensemble pool."
+
+[[step]]
+command = "train"
+stage = "cross_attention"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.7 row 3. Weaker than gating despite being more expressive."
+
+[[step]]
+command = "train"
+stage = "contrastive"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.8 row 1. Best contrastive pairing; enters the multimodal ensemble pool."
+
+[[step]]
+command = "train"
+stage = "contrastive"
+xray_candidate_id = "xray_maxvit"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.8 row 3."
+
+[[step]]
+command = "train"
+stage = "rckf"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.9 row 1. Strongest single route and the C-MODES default."
+
+[[step]]
+command = "train"
+stage = "rckf"
+xray_candidate_id = "xray_convnext_v2"
+mri_candidate_id = "mri_swin3d"
+description = "Table 4.9 row 2."
+
+[[step]]
+command = "train"
+stage = "rckf"
+xray_candidate_id = "xray_maxvit"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.9 row 3. Confirms RCKF generalises across X-ray backbone families."
+
+[[step]]
+command = "train"
+stage = "rckf"
+xray_candidate_id = "xray_maxvit"
+mri_candidate_id = "mri_swin3d"
+description = "Table 4.9 row 4."

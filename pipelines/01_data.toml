@@ -1,0 +1,18 @@
+pipeline_id = "01_data"
+section = "the dissertation 4.1 -- Data Distribution and Preprocessing"
+description = """
+Build the paired index and audit it. One CSV is the source of truth for every
+split, label and relative path; pair_key is the global primary key that joins OOF
+artifacts, C-MODES alignment and deployment records, and subject_id is the
+grouping key for every leakage control.
+"""
+
+[[step]]
+command = "check"
+operation = "data"
+description = "Audit layout, split counts, grade distribution and subject-level leakage across splits."
+
+[[step]]
+command = "records"
+operation = "scaffold"
+description = "Create results/<run_id>/ as an honest pending record. The trainer writes into it and will not create it."

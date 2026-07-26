@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: >-
+  Multimodal Kellgren-Lawrence grading of knee osteoarthritis from paired
+  radiographs and quantitative MRI
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - alias: vonKarsteine
+    email: vonKarsteine@users.noreply.github.com
+repository-code: https://github.com/vonKarsteine/Project-MScEng
+license: MIT
+version: 7.0.0
+date-released: "2026-07-27"
+abstract: >-
+  Five-class Kellgren-Lawrence grading of knee osteoarthritis from paired X-ray
+  and quantitative MRI (T2 and R2 volumes). The work contributes three
+  components: Residual-Calibrated Kalman Fusion (RCKF), which recasts
+  cross-modal fusion as a Bayesian measurement update so the model estimates per
+  case how far the volumetric evidence can be trusted; C-MODES, a dynamic
+  ensemble selector trained on out-of-fold risk differentials that learns when to
+  route a case away from the default model and when not to; and a
+  deployment-oriented quantization-aware training profile that distils the
+  full-precision composite into a mixed-precision student under a six-term
+  objective, so the quantized model inherits the teacher's cross-modal trust
+  policy rather than only its predictions.
+keywords:
+  - knee osteoarthritis
+  - Kellgren-Lawrence grading
+  - multimodal fusion
+  - ordinal classification
+  - Kalman filter
+  - ensemble selection
+  - quantization-aware training
+  - medical imaging

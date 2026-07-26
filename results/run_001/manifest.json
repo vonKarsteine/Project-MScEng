@@ -1,0 +1,17 @@
+{
+  "runId": "run_001",
+  "status": "pending",
+  "schemaVersion": "koa-record-v1",
+  "methodologyVersion": "chapter3_v2",
+  "condaEnv": "koa_project",
+  "precision": "fp32",
+  "artifactRoot": "artifacts/run_001",
+  "createdAt": "2026-07-26T17:59:01Z",
+  "notes": "Scaffolded, not run. Every metric field in this record is null and must stay null while status is pending; the validator rejects a pending record that carries numbers. The figures reported in MScEng.pdf Chapter 4 were produced on different hardware by an earlier checkout and are kept, clearly labelled, under results/published/. They are reference values for tests and must never be copied into this tree.",
+  "xrayCandidateCount": 5,
+  "mriCandidateCount": 4,
+  "traditionalFusionCount": 3,
+  "contrastiveFusionCount": 4,
+  "rckfFusionCount": 4,
+  "pairedDistributionTotal": 3536
+}

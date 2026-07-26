@@ -1,0 +1,39 @@
+# Multimodal candidate pool -- Table 4.10, rows 3-4, and Table 4.11 row 2.
+#
+# Four heterogeneous fusion routes rather than four seeds of one: gated fusion,
+# contrastive alignment, and two RCKF variants. Mixing fusion mechanisms is what
+# lifts the oracle bound to 0.938 (Table 4.11) -- the routes fail on different
+# samples, which is exactly the condition under which dynamic routing pays.
+#
+# The default is the strongest single route (RCKF over ConvNeXt V2 + SimSiam SSL,
+# 0.829 / 0.937 / 0.748 in Table 4.9). C-MODES switches away from it only when the
+# expected risk reduction clears tau_s + c_switch, so the default is the
+# conservative fallback, never merely one competitor among four.
+
+pool_id = "fusion"
+description = "Four heterogeneous multimodal routes (Table 4.10 rows 3-4)"
+default_candidate_id = "rckf_xray_convnext_v2_mri_simsiam_ssl"
+
+[[member]]
+candidate_id = "rckf_xray_convnext_v2_mri_simsiam_ssl"
+display_name = "RCKF: ConvNeXt V2 + SimSiam SSL"
+artifact = "artifacts/run_001/oof/rckf_xray_convnext_v2_mri_simsiam_ssl.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "rckf_xray_maxvit_mri_simsiam_ssl"
+display_name = "RCKF: MaxViT + SimSiam SSL"
+artifact = "artifacts/run_001/oof/rckf_xray_maxvit_mri_simsiam_ssl.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "contrastive_xray_convnext_v2_mri_simsiam_ssl"
+display_name = "Contrastive: ConvNeXt V2 + SimSiam SSL"
+artifact = "artifacts/run_001/oof/contrastive_xray_convnext_v2_mri_simsiam_ssl.json"
+weight = 1.0
+
+[[member]]
+candidate_id = "gated_xray_convnext_v2_mri_simsiam_ssl"
+display_name = "Gated: ConvNeXt V2 + SimSiam SSL"
+artifact = "artifacts/run_001/oof/gated_xray_convnext_v2_mri_simsiam_ssl.json"
+weight = 1.0

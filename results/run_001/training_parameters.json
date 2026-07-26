@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "koa-record-v1",
+  "runId": "run_001",
+  "status": "pending",
+  "description": "The resolved configuration this run would train under, including any KOA_<SECTION>__<KEY> environment overrides applied at load time. Inputs, not results.",
+  "configuration": {
+    "project": {
+      "name": "KOA_Multimodal_v7",
+      "methodologyVersion": "chapter3_v2",
+      "runId": "run_001"
+    },
+    "data": {
+      "rawRoot": "data/raw",
+      "trainingRoot": "data/training",
+      "xrayIndex": "data/training/xray/index/pairs_00m.csv"
+    },
+    "input": {
+      "xraySize": 384,
+      "mriDepth": 32,
+      "mriHeight": 384,
+      "mriWidth": 384
+    },
+    "preprocessing": {
+      "xrayLocator": "edge_intensity_knee_center_square_crop",
+      "xrayClaheClipLimit": 2.0,
+      "xrayClaheTileGridSize": 8,
+      "xrayRequireClahe": false,
+      "xrayNormalization": "imagenet_grayscale",
+      "xrayImagenetGrayMean": 0.449,
+      "xrayImagenetGrayStd": 0.226,
+      "mriDtype": "float32",
+      "mriCacheEnabled": false,
+      "mriCacheRoot": "artifacts/cache/mri",
+      "t2ClipMin": 0.0,
+      "t2ClipMax": 110.0,
+      "r2ClipMin": 0.0,
+      "r2ClipMax": 1.0
+    },
+    "augmentation": {
+      "xray": {
+        "randomResizedCropScale": [
+          0.82,
+          1.0
+        ],
+        "randomResizedCropRatio": [
+          0.9,
+          1.1
+        ],
+        "horizontalFlipP": 0.5,
+        "rotationDegrees": 12.0,
+        "rotationP": 0.85,
+        "affineTranslate": 0.04,
+        "affineScale": [
+          0.95,
+          1.05
+        ],
+        "intensityBrightness": 0.08,
+        "intensityContrast": 0.12
+      },
+      "mri": {
+        "horizontalFlipP": 0.5,
+        "verticalFlipP": 0.25,
+        "channelScale": [
+          0.92,
+          1.08
+        ],
+        "channelShift": [
+          -0.03,
+          0.03
+        ],
+        "gamma": [
+          0.9,
+          1.1
+        ],
+        "gaussianNoiseStd": 0.015
+      }
+    },
+    "model": {
+      "numClasses": 5,
+      "featureDim": 64,
+      "xrayPretrained": true,
+      "xrayPretrainedSource": "ImageNet",
+      "mriPretrained": false,
+      "mriPretrainedSource": "none_or_dataset_ssl",
+      "profiles": [
+        "fusion_cmodes_oof",
+        "fusion_traditional_ensemble",
+        "rckf_cv2_simsiam",
+        "xray_cmodes_oof"
+      ]
+    },
+    "rckf": {
+      "priorVariance": 0.15,
+      "varianceFloor": 0.05,
+      "varianceCeiling": 2.0,
+      "varianceGroups": 1,
+      "residualWeight": 0.1,
+      "monotoneActivation": "softplus"
+    },
+    "cmodes": {
+      "defaultCandidateId": "rckf",
+      "riskProbability": "nll",
+      "riskOrdinalWeight": 1.0,
+      "boundaryBins": [
+        0.1,
+        0.3
+      ],
+      "selectorHiddenDim": 64,
+      "selectorLocalLearningRate": 0.001,
+      "selectorLocalSteps": 3,
+      "selectorRounds": 5,
+      "selectorServerLearningRate": 0.5,
+      "selectorBeta1": 0.9,
+      "selectorBeta2": 0.999,
+      "selectorEpsilon": 0.001
+    },
+    "training": {
+      "environment": "koa_project",
+      "device": "cuda:0",
+      "precision": "fp32",
+      "amp": false,
+      "seed": 42,
+      "epochs": 20,
+      "optimizer": "AdamW",
+      "learningRate": 0.0001,
+      "weightDecay": 0.0001,
+      "scheduler": "cosine",
+      "warmupEpochs": 0,
+      "numWorkers": 0,
+      "pinMemory": true,
+      "oofFolds": 3,
+      "oofSeed": 42,
+      "checkpointMetric": "val_qwk",
+      "xrayBatchSize": 4,
+      "mriBatchSize": 1,
+      "fusionBatchSize": 4,
+      "multimodalGradientAccumulation": 4,
+      "contrastiveAlignmentWeight": 0.1,
+      "rckfResidualWeight": 0.1,
+      "qatKdWeight": 0.5,
+      "qatBoundaryWeight": 0.2,
+      "qatOrdinalWeight": 0.1,
+      "qatReliabilityWeight": 0.1,
+      "qatSelectorWeight": 0.1,
+      "qatTemperature": 3.0,
+      "qatMarginEpsilon": 0.05,
+      "qatSelectorFallbackMargin": 0.02
+    },
+    "statistics": {
+      "bootstrapIterations": 2000,
+      "bootstrapSeed": 7,
+      "bootstrapAlpha": 0.05,
+      "clusterBySubject": true
+    }
+  }
+}

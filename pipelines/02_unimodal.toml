@@ -1,0 +1,70 @@
+pipeline_id = "02_unimodal"
+section = "the dissertation 4.2 -- Single-modal Candidate Selection"
+description = """
+Screen five X-ray backbones (Table 4.5) and four MRI backbones (Table 4.6).
+Selection is on validation QWK, not accuracy, because KL grading is ordinal and a
+non-adjacent misgrade is clinically far worse than an adjacent one.
+
+MRI is screened after SimSiam pretraining: KL labels are native to radiographs, so
+supervising the volumetric branch with them directly imports label misalignment.
+"""
+
+[[step]]
+command = "train"
+stage = "xray"
+xray_candidate_id = "xray_convnext_v2"
+description = "Table 4.5 row 1. Best-balanced X-ray candidate; the prior branch of the deployed RCKF route."
+
+[[step]]
+command = "train"
+stage = "xray"
+xray_candidate_id = "xray_maxvit"
+description = "Table 4.5 row 2. Architecturally distinct, retained to test that fusion and routing generalise across backbone families."
+
+[[step]]
+command = "train"
+stage = "xray"
+xray_candidate_id = "xray_swin_t"
+description = "Table 4.5 row 3."
+
+[[step]]
+command = "train"
+stage = "xray"
+xray_candidate_id = "xray_efficientnet_v2"
+description = "Table 4.5 row 4."
+
+[[step]]
+command = "train"
+stage = "xray"
+xray_candidate_id = "xray_deit"
+description = "Table 4.5 row 5."
+
+[[step]]
+command = "train"
+stage = "mri_ssl"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "SimSiam self-supervised pretraining of the MRI encoder, before any KL supervision."
+
+[[step]]
+command = "train"
+stage = "mri"
+mri_candidate_id = "mri_simsiam_ssl"
+description = "Table 4.6 row 1. Best-balanced MRI candidate; the measurement branch of the deployed route."
+
+[[step]]
+command = "train"
+stage = "mri"
+mri_candidate_id = "mri_swin3d"
+description = "Table 4.6 row 2. Second MRI branch, structurally complementary."
+
+[[step]]
+command = "train"
+stage = "mri"
+mri_candidate_id = "mri_r3d18_attn"
+description = "Table 4.6 row 3. Best validation of the 3-D convolutional variants, but the largest validation-to-test drop -- small 3-D attention heads overfit weak label noise."
+
+[[step]]
+command = "train"
+stage = "mri"
+mri_candidate_id = "mri_r3d18"
+description = "Table 4.6 row 4. Plain 3-D convolutional baseline."

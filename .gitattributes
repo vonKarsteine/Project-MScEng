@@ -1,0 +1,25 @@
+# Normalise line endings in the repository; check out native on each platform.
+* text=auto
+
+*.py    text diff=python
+*.md    text
+*.toml  text
+*.json  text
+*.yml   text
+*.jsx   text
+*.js    text
+*.css   text
+*.html  text
+*.cff   text
+
+# Binary — never diff or normalise.
+*.png   binary
+*.jpg   binary
+*.pth   binary
+*.onnx  binary
+*.npy   binary
+*.nii   binary
+*.gz    binary
+
+# Generated; collapse in pull-request diffs.
+frontend/package-lock.json linguist-generated=true

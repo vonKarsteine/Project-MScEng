@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "koa-record-v1",
+  "runId": "run_001",
+  "status": "pending",
+  "description": "Ensemble and routing profiles, in the order of MScEng.pdf Table 4.10. Switch precision is the ordinal definition of koa_multimodal.stats.metrics.switch_precision -- a switch counts as correct when it lands closer to the truth than the default route would have -- and is meaningless without switchCount beside it.",
+  "profiles": [
+    {
+      "profileId": "xray_traditional_ensemble",
+      "strategy": "posterior_averaging",
+      "description": "MScEng.pdf Table 4.10: the X-ray pool of ConvNeXt V2, MaxViT, EfficientNet V2 and Swin-T.",
+      "poolCandidateIds": [
+        "xray_convnext_v2",
+        "xray_maxvit",
+        "xray_efficientnet_v2",
+        "xray_swin_t"
+      ],
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "switchPrecision": null,
+      "switchCount": null
+    },
+    {
+      "profileId": "xray_cmodes",
+      "strategy": "cmodes_routing",
+      "description": "MScEng.pdf Table 4.10: the X-ray pool of ConvNeXt V2, MaxViT, EfficientNet V2 and Swin-T.",
+      "poolCandidateIds": [
+        "xray_convnext_v2",
+        "xray_maxvit",
+        "xray_efficientnet_v2",
+        "xray_swin_t"
+      ],
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "switchPrecision": null,
+      "switchCount": null
+    },
+    {
+      "profileId": "multimodal_traditional_ensemble",
+      "strategy": "posterior_averaging",
+      "description": "MScEng.pdf Table 4.10 states this pool by family -- the gated fusion route together with the contrastive and RCKF candidates -- rather than by model. The id list is left empty on purpose: Table 4.11 calls the matching oracle a four-model bound, and no member-by-member reading of the family wording is determined by the text. A run resolves it from its pool configuration and writes the ids it actually used.",
+      "poolCandidateIds": [],
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "switchPrecision": null,
+      "switchCount": null
+    },
+    {
+      "profileId": "multimodal_cmodes",
+      "strategy": "cmodes_routing",
+      "description": "MScEng.pdf Table 4.10 states this pool by family -- the gated fusion route together with the contrastive and RCKF candidates -- rather than by model. The id list is left empty on purpose: Table 4.11 calls the matching oracle a four-model bound, and no member-by-member reading of the family wording is determined by the text. A run resolves it from its pool configuration and writes the ids it actually used.",
+      "poolCandidateIds": [],
+      "test": {
+        "accuracy": null,
+        "qwk": null,
+        "kl1Recall": null,
+        "sampleCount": null
+      },
+      "switchPrecision": null,
+      "switchCount": null
+    }
+  ]
+}

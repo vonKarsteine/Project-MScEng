@@ -1,0 +1,61 @@
+pipeline_id = "05_ensemble"
+section = "the dissertation 4.4-4.5 -- Ensemble Results, Oracle Gap, Statistical Validation"
+description = """
+Static stacking as the baseline, the oracle bound as the ceiling, then C-MODES
+between them, on both pools (Table 4.10).
+
+The oracle is not a result; it is the honest measure of remaining headroom. Both
+pools already reach 0.897 and 0.938, so what separates the deployed ensemble from
+perfect is a *selection* problem, not a capacity one -- which is the argument for
+routing rather than for bigger models.
+
+Every step here consumes out-of-fold artifacts only. The switch threshold is
+calibrated on OOF predictions too: calibrating it on validation or test would leak
+the evaluation set into the routing policy.
+"""
+
+[[step]]
+command = "ensemble"
+operation = "stack"
+pool = "xray"
+description = "Table 4.10 row 1. Static weighted posterior stack; switch precision is 0.000 because it never switches."
+
+[[step]]
+command = "ensemble"
+operation = "cmodes"
+pool = "xray"
+description = "Table 4.10 row 2. X-ray C-MODES: 0.829 accuracy, matching the best fusion single model with radiographs alone."
+
+[[step]]
+command = "ensemble"
+operation = "stack"
+pool = "fusion"
+description = "Table 4.10 row 3. Multimodal static stack."
+
+[[step]]
+command = "ensemble"
+operation = "cmodes"
+pool = "fusion"
+description = "Table 4.10 row 4. The reported final architecture: 0.872 accuracy, 0.954 QWK, 0.824 KL1 recall."
+
+[[step]]
+command = "ensemble"
+operation = "oracle"
+pool = "xray"
+description = "Table 4.11 row 1. X-ray-only four-model ceiling."
+
+[[step]]
+command = "ensemble"
+operation = "oracle"
+pool = "fusion"
+description = "Table 4.11 row 2. Bimodal four-model ceiling."
+
+[[step]]
+command = "stats"
+operation = "validate"
+pool = "fusion"
+description = """
+Subject-clustered stratified bootstrap at B = 2000 (Table 4.12), then planned
+paired comparisons of the final routed model against two pre-declared baselines
+with Holm-Bonferroni correction (Table 4.13).
+"""

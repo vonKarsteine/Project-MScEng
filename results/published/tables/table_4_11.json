@@ -1,0 +1,23 @@
+{
+  "table": "4.11",
+  "caption": "Oracle selection bounds on the test split: the ceiling a perfect per-sample router over each pool could reach. Not achievable.",
+  "source": "MScEng.pdf",
+  "rows": [
+    {
+      "displayName": "X-ray-only four-model oracle",
+      "testAcc": 0.897,
+      "testQwk": 0.951,
+      "testKl1": 0.747,
+      "poolId": "xray_only_four_model",
+      "pool": "ConvNeXt V2 + MaxViT + EfficientNet V2 + Swin-T"
+    },
+    {
+      "displayName": "Bimodal four-model oracle",
+      "testAcc": 0.938,
+      "testQwk": 0.964,
+      "testKl1": 0.849,
+      "poolId": "bimodal_four_model",
+      "pool": "gated fusion + contrastive + RCKF candidates"
+    }
+  ]
+}

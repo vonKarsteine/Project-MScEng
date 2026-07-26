@@ -1,0 +1,27 @@
+pipeline_id = "04_oof"
+section = "the dissertation 3.3.1 -- Out-of-Fold Meta-Feature Space Construction"
+description = """
+Generate leak-free out-of-fold predictions for both candidate pools.
+
+This is the methodological spine and the step most easily faked. Each fold
+requires a genuine retraining on the non-held-out subjects -- not a relabelling of
+one validation run -- and every artifact carries per-row subjectIds and foldIds
+plus a per-fold trainSubjectHash (sha256 over the sorted training subject ids), so
+a reader can verify cryptographically that fold-k predictions came from a model
+that never saw fold k.
+
+Folds are subject-grouped and grade-stratified: a patient contributes two knees,
+and splitting them across folds would leak.
+"""
+
+[[step]]
+command = "ensemble"
+operation = "oof"
+pool = "xray"
+description = "Per-fold retraining of the four X-ray candidates; emits V2 artifacts with fold provenance."
+
+[[step]]
+command = "ensemble"
+operation = "oof"
+pool = "fusion"
+description = "Per-fold retraining of the four multimodal routes."
