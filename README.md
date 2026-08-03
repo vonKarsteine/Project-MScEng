@@ -6,8 +6,7 @@
 [![PyTorch 2.5.1](https://img.shields.io/badge/pytorch-2.5.1%2Bcu118-ee4c2c.svg)](DEPENDENCIES.md)
 
 Five-class Kellgren–Lawrence grading of knee osteoarthritis from **paired X-ray and MRI**
-(quantitative T2 and R2 volumes), packaged as the engineering artefact behind Chapters 3 and 4 of an
-HKU DASE7099 dissertation. Three contributions sit on top of a conventional ordinal-classification
+(quantitative T2 and R2 volumes). Three contributions upon a conventional ordinal-classification
 baseline: **RCKF**, which recasts multimodal fusion as a Bayesian measurement update so the model
 estimates *per case* how far the volumetric evidence can be trusted; **C-MODES**, which learns from
 out-of-fold predictions alone when to route a case away from the default model and when
