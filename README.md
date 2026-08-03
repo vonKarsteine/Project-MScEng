@@ -10,11 +10,10 @@ Five-class Kellgren–Lawrence grading of knee osteoarthritis from **paired X-ra
 HKU DASE7099 dissertation. Three contributions sit on top of a conventional ordinal-classification
 baseline: **RCKF**, which recasts multimodal fusion as a Bayesian measurement update so the model
 estimates *per case* how far the volumetric evidence can be trusted; **C-MODES**, which learns from
-out-of-fold predictions alone when to route a case away from the default model and, crucially, when
+out-of-fold predictions alone when to route a case away from the default model and when
 not to; and a **deployment QAT** stage that distils the FP32 composite into a mixed-precision student
 under a six-term objective, so the quantized model inherits the teacher's cross-modal trust policy
-rather than merely its answers. The repository's product is *evidence*, not a model: reproducible
-result records, statistical validation, and a demo deployment a reviewer can run.
+rather than merely its answers.
 
 ## Repository map
 
@@ -26,8 +25,6 @@ result records, statistical validation, and a demo deployment a reviewer can run
 | `configs/default.toml` | Every tunable, one typed field each. `configs/pools/*.toml` bind candidate pools. |
 | `pipelines/*.toml` | The six dissertation sections as declarative manifests, walked by `koa pipeline`. |
 | `frontend/` | React + Vite + Konva clinical workbench. |
-| `results/run_001/` | The curated, dissertation-facing record tree for this run. Currently `pending`. |
-| `results/published/` | Chapter 4's reported figures, transcribed from the PDF. **Not output of this checkout.** |
 | `artifacts/` | Heavy machine output (checkpoints, OOF predictions, exports). Auto-created, never curated. |
 | `data/` | The OAI subset. **Empty here** — see *Status*. |
 | `tests/` | Contract tests. They are the deliverable's proof, since no training is run. |
@@ -91,28 +88,6 @@ prediction is served by the deterministic mock and says so in `metadata.runtime`
 `KOA_V7_DEPLOYMENT_CHECKPOINT` to a real checkpoint switches multipart uploads to the torch runtime;
 the variable is read once at start-up, so changing it needs a restart.
 
-## Status
-
-Stated plainly, because the difference between "this code could produce these numbers" and "this
-checkout produced these numbers" is the whole point of the record discipline:
-
-- **`data/` is empty by design.** The OAI subset is not redistributable. Every command that touches
-  real data therefore stops at index load; `--dry-run`, `--contract-check`, `--synthetic` and the
-  test suite are unaffected, which is why the run book above is built entirely out of them.
-- **No training has been run in this checkout.** Not a partial run, not a smoke run that wrote
-  something. `koa train` resolves and contract-checks a stage; it does not train.
-- **`results/run_001/` is a scaffolded `pending` record with null metrics.** The validator enforces
-  the direction of that rule: a `pending` record carrying numbers is rejected, because that is
-  exactly the shape transcribed or invented figures would take if they leaked into the record tree.
-- **`results/published/` holds the figures reported in the dissertation.** They exist so the test
-  suite can check that the constants the code runs on agree with the write-up, and so the reported
-  tables are machine-readable. They are **not** output of this checkout — they were produced on
-  different hardware in the original experimental run — and they must never be copied into a run
-  record. `results/published/SOURCE.md` states this at length.
-- **The ONNX export path is live and tested.** `onnx` and `onnxruntime` are present in this
-  environment, so `tests/test_qat.py` performs a real export of a small synthetic student and
-  validates the resulting graph — the first generation of this package in which that was possible.
-  What is missing is only a *trained* student to export.
 
 ## Further reading
 
